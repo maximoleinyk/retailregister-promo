@@ -3,3 +3,4 @@ logs
 .grunt
 node_modules
 .idea
+public/js/libs
