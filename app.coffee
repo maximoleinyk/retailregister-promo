@@ -12,13 +12,18 @@ module.exports = (config) ->
     layoutsDir: config.viewsDir
     defaultLayout: 'layout'
     extname: '.hbs'
-    helpers: {}
+    helpers:
+      js: (path) ->
+        "<script src=\"#{config.staticPath}/js/#{path}\"></script>"
+      css: (path) ->
+        "<link rel=\"stylesheets\" href=\"#{config.staticPath}/css/#{path}\"/>"
     partialsDir: []
 
   app.engine 'hbs', hbs.engine
   app.set 'view engine', 'hbs'
   app.set 'views', config.viewsDir
 
+  app.use config.staticPath, express.static(config.staticDir)
   app.use bodyParser.json()
   app.use cookieParser()
   app.use express.static(config.staticDir)

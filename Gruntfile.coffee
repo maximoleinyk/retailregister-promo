@@ -13,21 +13,20 @@ module.exports = (grunt) ->
 
     watch:
       scripts:
-        files: ['public/**/*.js']
+        files: ['assets/**/*.js']
         tasks: ['preprocess']
       styles:
-        files: ['public/**/*.css']
+        files: ['assets/**/*.css']
         tasks: ['autoprefixer', 'cssmin']
 
     copy:
       main:
-        src: 'public/robots.txt',
-        dest: 'dist/robots.txt',
+        src: 'assets/robots.txt'
+        dest: 'dist/robots.txt'
+      css:
+        src: 'assets/css/main.css'
+        dest: 'dist/css/main.css'
 
-    cssmin:
-      main:
-        files:
-          'dist/css/main.css': ['dist/css/main.css']
     less:
       build:
         options:
@@ -40,14 +39,13 @@ module.exports = (grunt) ->
             })
           ]
           modifyVars:
-            imgPath: '"http://mycdn.com/path/to/images"'
             bgColor: 'red'
         files:
-          "dist/css/main.css": "public/css/main.less"
+          "assets/css/main.css": "assets/css/main.less"
 
     preprocess:
       js:
-        src: 'public/js/common.js'
+        src: 'assets/js/main.js'
         dest: 'dist/js/main.js'
 
     uglify:
@@ -64,4 +62,4 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-contrib-less')
   grunt.loadNpmTasks('grunt-preprocess')
 
-  grunt.registerTask('default', ['clean', 'copy', 'less', 'preprocess', 'uglify'])
+  grunt.registerTask('default', ['clean', 'less', 'copy', 'preprocess', 'uglify'])
