@@ -1,10 +1,6 @@
-define(['marionette'], function(Marionette) {
- 'use strict';
+(function() {
+    'use strict';
 
- var app = new Marionette.Application();
+    // code goes here
 
- app.start();
-
- return app;
-
-});
+}());

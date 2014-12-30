@@ -13,5 +13,16 @@
   },
   "scripts": {
     "start": "node start.js"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-less": "^1.0.0",
+    "grunt-contrib-uglify": "^0.7.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-preprocess": "^4.1.0",
+    "less-plugin-autoprefix": "^1.1.0",
+    "less-plugin-clean-css": "^1.4.0"
   }
 }
