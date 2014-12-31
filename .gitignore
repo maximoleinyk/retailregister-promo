@@ -5,4 +5,5 @@ logs
 node_modules
 dist
 public/js/libs
-/assets/css/main.css
+assets/css/main.css
+assets/js/app/templates.js

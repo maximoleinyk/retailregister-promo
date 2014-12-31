@@ -4,9 +4,10 @@
     } else if (typeof define === 'function' && define.amd) {
         define(factory);
     } else {
-        factory();
+        factory.call(root);
     }
 }(this, function () {
+    'use strict';
 
     // @include ./libs/underscore/underscore.js
     // @include ./libs/jquery/dist/jquery.js
@@ -18,6 +19,9 @@
     // @include ./libs/backbone.wreqr/lib/backbone.wreqr.js
     // @include ./libs/marionette/lib/backbone.marionette.js
 
+    window.RetailRegisterPromo = window.RetailRegisterPromo || {};
+
+    // @include ./app/templates.js
     // @include ./app/start.js
 
 }));

@@ -2,7 +2,6 @@ Autoprefixer = require('less-plugin-autoprefix')
 CleanCSS = require('less-plugin-clean-css')
 
 module.exports = (grunt) ->
-
   grunt.initConfig
 
     pkg: grunt.file.readJSON('package.json')
@@ -11,13 +10,31 @@ module.exports = (grunt) ->
       build:
         src: ['dist']
 
+    eslint:
+      target:
+        src: ['assets/js/app/**/*.js']
+      options:
+        config: 'eslint.json'
+
     watch:
       scripts:
-        files: ['assets/**/*.js']
-        tasks: ['preprocess']
+        files: ['assets/**/*.js', 'assets/**/*.hbs']
+        tasks: ['dev']
       styles:
-        files: ['assets/**/*.css']
-        tasks: ['autoprefixer', 'cssmin']
+        files: ['assets/**/*.less']
+        tasks: ['less', 'copy:css']
+      templates:
+        files: ['assets/js/app/**/*.hbs']
+        tasks: ['handlebars']
+
+    handlebars:
+      templates:
+        files:
+          'assets/js/app/templates.js': ['assets/js/app/**/*.hbs']
+        options:
+          namespace: 'RetailRegisterPromo.templates'
+          processName: (filePath) ->
+            filePath.replace(/assets\/js\/app\/templates\/(.*)\.hbs/, '$1')
 
     copy:
       main:
@@ -60,6 +77,11 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-contrib-copy')
   grunt.loadNpmTasks('grunt-contrib-less')
+  grunt.loadNpmTasks('grunt-contrib-handlebars')
   grunt.loadNpmTasks('grunt-preprocess')
+  grunt.loadNpmTasks('grunt-eslint')
 
-  grunt.registerTask('default', ['clean', 'less', 'copy', 'preprocess', 'uglify'])
+  grunt.registerTask('dev', ['clean', 'less', 'copy', 'handlebars', 'preprocess'])
+  grunt.registerTask('build', ['dev', 'uglify'])
+
+  grunt.registerTask('default', ['dev'])

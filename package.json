@@ -5,18 +5,21 @@
     "body-parser": "^1.6.1",
     "coffee-script": "1.7.1",
     "cookie-parser": "^1.3.2",
+    "errorhandler": "^1.3.0",
     "express": "^4.10.6",
     "express-error-handler": "^1.0.1",
     "express-handlebars": "^1.1.0",
     "morgan": "^1.5.0"
   },
   "scripts": {
-    "start": "node start.js"
+    "start": "supervisor -e hbs node start.js"
   },
   "devDependencies": {
-    "grunt": "^0.4.5",
+    "grunt": "~0.4.1",
+    "grunt-eslint": "0.3.2",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-handlebars": "^0.9.1",
     "grunt-contrib-less": "^1.0.0",
     "grunt-contrib-uglify": "^0.7.0",
     "grunt-contrib-watch": "^0.6.1",
