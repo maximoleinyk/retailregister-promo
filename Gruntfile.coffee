@@ -23,18 +23,18 @@ module.exports = (grunt) ->
       styles:
         files: ['assets/**/*.less']
         tasks: ['less', 'copy:css']
-      templates:
+      views:
         files: ['assets/js/app/**/*.hbs']
         tasks: ['handlebars']
 
     handlebars:
-      templates:
+      views:
         files:
           'assets/js/app/templates.js': ['assets/js/app/**/*.hbs']
         options:
           namespace: 'RetailRegisterPromo.templates'
           processName: (filePath) ->
-            filePath.replace(/assets\/js\/app\/templates\/(.*)\.hbs/, '$1')
+            filePath.replace(/assets\/js\/app\/views\/(.*)\.hbs/, '$1')
 
     copy:
       main:

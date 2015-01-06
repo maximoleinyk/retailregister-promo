@@ -31,6 +31,9 @@ module.exports = (config) ->
   app.use morgan('combined')
   app.use router
 
+  router.post '/subscribe', (req, res) ->
+    res.status(200).end();
+
   app.all '/robots.txt', (req, res) ->
     res.send('User-agent: *', {'Content-Type': 'text/plain'})
 

@@ -3,13 +3,11 @@
 
     $(document).ready(function () {
 
-        var View = Marionette.ItemView.extend({
-            template: RetailRegisterPromo.templates['main'],
-            el: $('[data-id="app"]')
-        });
+        // @include ./views/main.js
 
-        new View().render();
+        var view = new MainView();
+        view.render();
 
     });
 
-})();
+}());
